@@ -7,7 +7,7 @@ const Rooms = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/rooms")
+      .get("https://hotel-booking-system-backend-7zdf.onrender.com/api/rooms")
       .then((res) => {
         setRooms(res.data);
       })

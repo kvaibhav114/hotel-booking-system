@@ -27,7 +27,7 @@ export default function RoomDetailsModal({ room, onClose }) {
       setErrorMsg('');
       setSuccessMsg('');
 
-      await axios.post('http://localhost:5000/api/bookings', {
+      await axios.post('https://hotel-booking-system-backend-7zdf.onrender.com/api/bookings', {
         roomType: room.type,
         roomNumber: room.roomNumber,
         ...formData

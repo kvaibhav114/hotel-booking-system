@@ -13,7 +13,7 @@ export default function AdminDashboard() {
   const fetchBookings = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/bookings", {
+      const res = await axios.get("https://hotel-booking-system-backend-7zdf.onrender.com/api/bookings", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setBookings(res.data);
@@ -32,7 +32,7 @@ export default function AdminDashboard() {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/bookings/${id}`, {
+      await axios.delete(`https://hotel-booking-system-backend-7zdf.onrender.com/api/bookings/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setBookings(bookings.filter((b) => b._id !== id));
@@ -51,7 +51,7 @@ export default function AdminDashboard() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        `http://localhost:5000/api/bookings/${editingId}`,
+        `http://https://hotel-booking-system-backend-7zdf.onrender.com/bookings/${editingId}`,
         editData,
         {
           headers: { Authorization: `Bearer ${token}` },
