@@ -11,8 +11,8 @@ const rooms = [
     price: 3000,
     maxPeople: 2,
     images: [
-      'https://example.com/deluxe1.jpg',
-      'https://example.com/deluxe2.jpg'
+      'https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg',
+      'https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg'
     ],
     amenities: ['WiFi', 'Air Conditioning', 'Room Service'],
     roomNumbers: [
@@ -26,8 +26,8 @@ const rooms = [
     price: 5000,
     maxPeople: 4,
     images: [
-      'https://example.com/suite1.jpg',
-      'https://example.com/suite2.jpg'
+      'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg',
+      'https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg'
     ],
     amenities: ['WiFi', 'Jacuzzi', 'Mini Bar', 'Air Conditioning'],
     roomNumbers: [
@@ -41,8 +41,8 @@ const rooms = [
     price: 2000,
     maxPeople: 2,
     images: [
-      'https://example.com/standard1.jpg',
-      'https://example.com/standard2.jpg'
+      'https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg',
+      'https://images.pexels.com/photos/1449209/pexels-photo-1449209.jpeg'
     ],
     amenities: ['WiFi', 'Television', 'Daily Housekeeping'],
     roomNumbers: [
@@ -51,6 +51,7 @@ const rooms = [
     ]
   }
 ];
+
 
 
 const seedRooms = async () => {

@@ -3,18 +3,26 @@ import { Link } from "react-router-dom";
 export default function App() {
   return (
     <div
-      className="h-screen bg-cover bg-center flex flex-col items-center justify-center text-white text-center"
+      className="h-screen bg-cover bg-center flex items-center justify-center relative"
       style={{
         backgroundImage:
-          "url('https://plus.unsplash.com/premium_photo-1661964071015-d97428970584?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aG90ZWx8ZW58MHx8MHx8fDA%3D')",
+          "url('https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg')",
       }}
     >
-      <div className="bg-black bg-opacity-60 p-8 rounded-lg">
-        <h1 className="text-5xl font-bold mb-4">Hotel Hillock</h1>
-        <p className="text-xl mb-6">Room Booking Portal</p>
+      {/* Soft blur overlay */}
+      <div className="absolute inset-0 backdrop-blur-xs"></div>
+
+      {/* Content */}
+      <div className="relative text-center text-white px-6">
+        <h1 className="text-6xl font-extrabold mb-6 drop-shadow-lg">
+          Hotel Hillock
+        </h1>
+        <p className="text-2xl mb-8 drop-shadow-md">
+          Room Booking Portal
+        </p>
         <Link
           to="/rooms"
-          className="bg-white text-black px-6 py-3 rounded font-semibold hover:bg-gray-200 transition"
+          className="bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-200 transition shadow-lg"
         >
           Book Rooms
         </Link>

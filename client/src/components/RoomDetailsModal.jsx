@@ -28,12 +28,12 @@ export default function RoomDetailsModal({ room, onClose }) {
       setSuccessMsg('');
 
       await axios.post('http://localhost:5000/api/bookings', {
-        roomType: room.roomType,       // Assuming roomType & roomNumber are needed in backend
+        roomType: room.type,
         roomNumber: room.roomNumber,
         ...formData
       });
 
-      setSuccessMsg('Booking successful!');
+      setSuccessMsg('🎉 Booking successful!');
       setFormData({
         guestName: '',
         email: '',
@@ -42,7 +42,7 @@ export default function RoomDetailsModal({ room, onClose }) {
         guests: 1,
       });
     } catch (err) {
-      setErrorMsg('Booking failed. Try again.');
+      setErrorMsg('❌ Booking failed. Please try again.');
       console.error(err);
     } finally {
       setLoading(false);
@@ -50,56 +50,76 @@ export default function RoomDetailsModal({ room, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-xl w-full max-w-lg">
-        <h2 className="text-2xl font-semibold mb-2">{room.name}</h2>
-        <p className="mb-4">{room.description}</p>
-        <p className="mb-4 font-medium">₹{room.price} / night</p>
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white p-8 rounded-2xl w-full max-w-lg shadow-lg relative">
+        <h2 className="text-3xl font-bold text-gray-800 mb-2">{room.type}</h2>
+        <p className="text-gray-600 mb-4">{room.description}</p>
+        <p className="text-xl font-semibold text-blue-700 mb-6">₹{room.price} <span className="text-sm font-normal text-gray-500">/ night</span></p>
 
-        <div className="space-y-2">
-          <input
-            type="text"
-            name="guestName"
-            placeholder="Your Name"
-            value={formData.guestName}
-            onChange={handleChange}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="date"
-            name="checkIn"
-            value={formData.checkIn}
-            onChange={handleChange}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="date"
-            name="checkOut"
-            value={formData.checkOut}
-            onChange={handleChange}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="number"
-            name="guests"
-            min="1"
-            value={formData.guests}
-            onChange={handleChange}
-            className="w-full p-2 border rounded"
-          />
+        <div className="space-y-4">
+          <div>
+            <label className="block text-gray-700 mb-1">Guest Name</label>
+            <input
+              type="text"
+              name="guestName"
+              placeholder="Your Name"
+              value={formData.guestName}
+              onChange={handleChange}
+              className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-700 mb-1">Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
+
+          <div className="flex gap-4">
+            <div className="flex-1">
+              <label className="block text-gray-700 mb-1">Check-In</label>
+              <input
+                type="date"
+                name="checkIn"
+                value={formData.checkIn}
+                onChange={handleChange}
+                className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 outline-none"
+              />
+            </div>
+            <div className="flex-1">
+              <label className="block text-gray-700 mb-1">Check-Out</label>
+              <input
+                type="date"
+                name="checkOut"
+                value={formData.checkOut}
+                onChange={handleChange}
+                className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 outline-none"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-gray-700 mb-1">Guests</label>
+            <input
+              type="number"
+              name="guests"
+              min="1"
+              value={formData.guests}
+              onChange={handleChange}
+              className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
 
           <button
             onClick={handleBooking}
             disabled={loading}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
+            className="bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 w-full transition"
           >
             {loading ? 'Booking...' : 'Book Now'}
           </button>
@@ -109,10 +129,11 @@ export default function RoomDetailsModal({ room, onClose }) {
         </div>
 
         <button
-          className="mt-4 text-gray-600 underline"
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-xl"
           onClick={onClose}
+          title="Close"
         >
-          Close
+          ✖
         </button>
       </div>
     </div>
